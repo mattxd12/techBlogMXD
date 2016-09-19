@@ -54,14 +54,6 @@ router.post('/article/:id/addcomment',(req, res, next) => {
     var id  = req.params.id;
     query.blogPosts().where('blogid',id).then((posts) => {
     query.commentsPosts().where('blog_post_id', id).then((data) => {
-
-        // for (var comments of data) {
-        //   var thisPostsComments = [];
-        //   if (blogposts.blogid == comments.blog_post_id){
-            console.log(data);
-        //       data.push(thisPostsComments)
-        // }
-      // }
     res.render('article', {
       items:posts,
       data:data
@@ -86,6 +78,18 @@ router.post('/article/:id/addcomment',(req, res, next) => {
     })
   })
 
+  router.get('/items/modify/:id', function(req, res, next) {
+    console.log("deleting comment "+ req.params.id);
+    query.modifyBlogPost(req.params.id)
+    .then(function() {
+      res.redirect('/');
+    })
+    .catch(function(err) {
+      return next(err)
+    })
+  })
+
+
 //not working yet
   router.get('/data/delete/:id', function(req, res, next) {
     console.log("deleting comment "+ req.params.id);
@@ -97,6 +101,15 @@ router.post('/article/:id/addcomment',(req, res, next) => {
       return next(err)
     })
   })
-
+  router.get('/data/modify/:id', function(req, res, next) {
+    console.log("deleting comment "+ req.params.id);
+    query.modifyBlogComment(req.params.id)
+    .then(function() {
+      res.redirect('/');
+    })
+    .catch(function(err) {
+      return next(err)
+    })
+  })
 
 module.exports = router;

@@ -2,7 +2,10 @@
   {{#each items}}
     <div class="blogPostDiv">
       <a href="/{{this.id}}">
-      <span class='completed'><a href="/items/delete/{{dotdotdot this.blogid}}"><strong>x</strong></a></span>
+      <div class="change">
+        <span style='color:red' class='deleteItem'><a href="/items/delete/{{this.blogid}}"><strong>x</strong></a></span>
+        <span class='modifyPost'><a href="/items/modify/{{this.blogid}}"><strong>edit</strong></a></span>
+      </div>
       <h2 class="postTitle">{{this.title}}</h2>
       <p class="postContent">{{dotdotdot this.content}}</p>
       <li class="postName"><strong>Written by: {{this.name}}</strong></li>
@@ -26,7 +29,7 @@
     </div>
     <div>
       <label for='item-content'>blog post </label>
-      <textarea name='content' placeholder='blog post' class="inputBox" rows='10' cols= '80'></textarea>
+      <textarea name='content' placeholder='blog post' class="inputBox postInputBox" rows='10' cols= '90'></textarea>
     </div>
     <div>
       <input type='submit'>

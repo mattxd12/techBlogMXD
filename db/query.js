@@ -16,6 +16,7 @@ router.use(bodyParser.json());
 function blogPosts() {
   return knex('blogposts');
 }
+
 function commentsPosts() {
   return knex('comments');
 }
@@ -42,13 +43,20 @@ function newBlogComment(blog_post_id, subject, comment,created_at, updated_at) {
   })
 }
 
-
 function deleteBlogPost(id) {
   return knex('blogposts').where('blogid', id).del();
 }
 
 function deleteBlogComment(id) {
   return knex('comments').where('id', id).del();
+}
+
+function modifyBlogPost(id) {
+  return knex('blogposts').where('blogid', id).update();
+}
+
+function modifyBlogComment(id) {
+  return knex('comments').where('id', id).update();
 }
 
 
@@ -58,6 +66,7 @@ module.exports = {
   newBlogPost,
   newBlogComment,
   deleteBlogComment,
-  deleteBlogPost
-
+  deleteBlogPost,
+  modifyBlogPost,
+  modifyBlogComment
 }

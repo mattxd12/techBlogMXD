@@ -19,12 +19,12 @@ a, p, h1, h2, h3 {
 .completed > h3, h2, p{
   color:black;
 }
-.createBlog{
+.createBlog, .commentContainer{
   display: flex;
   justify-content: center;
   width: 100%;
 }
-.inputBox{
+.inputBox, .Comments{
   display: flex;
   justify-content: center;
 }
@@ -36,15 +36,24 @@ label{
   /*margin-right: 95%;*/
   margin-top: 1%;
   margin-bottom: 1%;
-
+}
+.commentHead{
+  color: white;
+  display: flex;
+  justify-content: center;
 }
 p.postContent{
   font-size: 1.2em;
   font-family: 'UbuntuRegular', sans-serif;
   margin: 1.5% 1.5% 1.5% 1.5%;
 }
-.completed{
-  margin-left: .5%;
+.createdDate{
+  margin: 1.5% 1.5% 1.5% 1.5%;
+  color: black;
+}
+.borderDiv{
+  border-top: 1px black solid;
+  border-bottom: 1px black solid;
 }
 .topBar{
   color: white;
@@ -76,6 +85,7 @@ p.postContent{
   min-width: 92%;
   word-wrap: normal;
   margin: 1% 1%;
+  border-radius: 5px 5px 5px 5px;
 }
 .blogPostDiv{
   background: rgba(239, 239, 239, 0.8);
@@ -86,22 +96,41 @@ p.postContent{
   border-bottom: rgb(13, 7, 112) 2px solid;
   border-radius: 5px 5px 5px 5px;
 }
-.completed > a{
-  color: red;
-  text-decoration: none;
-  font-size: 1.2em;
+.commentPostDiv{
+  display: flex;
+  justify-content: flex-start;
+  flex-flow: wrap;
+  word-break: break-all;
+  list-style-type: disc;
+  -webkit-padding-start: 40px;
+  /*-webkit-padding-end: 40px;*/
+}
+.comments{
+  background: rgba(239, 239, 239, 0.8);
+  max-width: 92%;
+  min-width: 92%;
+  word-wrap: normal;
+  margin: 1% 1%;
+  border-radius: 5px 5px 5px 5px;
+  -webkit-padding-start: 0px;
 }
 .postName{
   display: flex;
   justify-content: flex-end;
   padding-bottom: 1.5%;
-  padding-right: 1.5%
+  padding-right: 1.5%;
+  color: black;
 }
-.postTitle{
+.postTitle {
   padding-bottom: 2%;
   border-bottom: rgb(13, 7, 112) 4px solid;
   display: flex;
   justify-content: center;
+}
+.commentSubject{
+  display: flex;
+  justify-content: center;
+  border: 0 !important;
 }
 .read_more_button{
   color: rgb(13, 7, 112);
@@ -112,12 +141,10 @@ p.postContent{
   font-weight: bold;
   /*background-color: rgba(13, 7, 112,.2);*/
 }
-
 .blogPostDiv:hover > .read_more_button {
   background-color: rgba(13, 7, 112,.2);
   transition: background .2s ease-in-out, color .2s ease-in-out;
 }
-
 .read_more_button:hover {
   color: white;
   font-size: 1.22em;
@@ -126,7 +153,28 @@ p.postContent{
 .comments{
   color: white;
 }
+.deleteItem > a{
+  color: red;
+  text-decoration: none;
+  font-size: 1.2em;
+  margin-left: 0;
+  display: flex;
+  justify-content: flex-start;
+}
 
+.deleteItem{
+  float: left;
+  padding: 3px 5px 2px 2px;
+}
+.modifyPost > a{
+  color: blue;
+  text-decoration: none;
+  font-size: 1em;
+}
+.modifyPost{
+  float: right;
+  padding: 3px 5px 2px 2px;
+}
 
 @media only screen and (max-width: 768px) {
     /* For mobile phones: */
@@ -137,7 +185,13 @@ p.postContent{
       display: flex;
       justify-content: center;
     }
-
+    .inputBox{
+      margin-left: 4%;
+    }
+    .postInputBox{
+      width: 90%;
+      margin-left: 4%;
+    }
     .blogPostDiv {
       margin: 2.5% 2.5% 2.5% 2.5%;
       width: auto;
@@ -152,6 +206,27 @@ p.postContent{
       max-width: 92%;
       min-width: 92%;
       word-wrap: normal;
+    }
+    .commentPostDiv{
+      width: auto;
+      max-width: 100%;
+      min-width: 100%;
+      display: flex;
+      justify-content: center;
+      -webkit-padding-start: 0px;
+      -webkit-padding-end: 0px;
+    }
+    .comments{
+      margin: 2.5% 2.5% 2.5% 2.5%;
+      width: auto;
+      max-width: 92%;
+      min-width: 92%;
+      word-wrap: normal;
+    }
+    .completed > a{
+      color: red;
+      text-decoration: none;
+      font-size: 1.2em;
     }
     ul, menu, dir {
       display: block;
