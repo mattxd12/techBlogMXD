@@ -2,9 +2,9 @@
   {{#each items}}
     <div class="blogPostDiv">
       <a href="/{{this.id}}">
-      <span class='completed'><a href="/api/v1/items/delete/{{this.blogid}}"><strong>x</strong></a></span>
+      <span class='completed'><a href="/items/delete/{{dotdotdot this.blogid}}"><strong>x</strong></a></span>
       <h2 class="postTitle">{{this.title}}</h2>
-      <p class="postContent">{{ this.content}}</p>
+      <p class="postContent">{{dotdotdot this.content}}</p>
       <li class="postName"><strong>Written by: {{this.name}}</strong></li>
       <a href="article/{{this.blogid}}" class="read_more_button">Read More</a>
     </div>
@@ -13,21 +13,20 @@
 
 
 
-<h2> Create a blog post</h2>
-<p>Welcome {{user.user_name}}!</p>
-<section>
+<h1 class='white createBlog'> Create a blog post</h1>
+<section class='createBlog'>
   <form class='add-item' action='/' method='post'>
     <div>
-      <label for='item-name'> Your Name </label>
-      <input type='text' name='name' value=''></input>
+      <label for='item-name'>user name </label>
+      <input type='text' name='name' class="inputBox" placeholder="user name" value=''></input>
     </div>
     <div>
-      <label for='item-title'> Title </label>
-      <input type='text' name='title' value=''></input>
+      <label for='item-title'> title </label>
+      <input type='text' name='title' class="inputBox" placeholder="title" value=''></input>
     </div>
     <div>
-      <label for='item-content'>Blog Post </label>
-      <textarea name='content' rows='8' cols= '40'></textarea>
+      <label for='item-content'>blog post </label>
+      <textarea name='content' placeholder='blog post' class="inputBox" rows='10' cols= '80'></textarea>
     </div>
     <div>
       <input type='submit'>

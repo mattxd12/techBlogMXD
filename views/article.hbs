@@ -1,8 +1,8 @@
 <ul class="blogPostDivContainer">
   {{#each items}}
     <div class="blogPostDiv">
-      <span class='completed'><a href="/api/v1/items/delete/{{this.blogid}}"><strong>x</strong></a></span>
-      <h3 class="createdDate">Posted on: {{ this.created_at}}</h3>
+      <span class='completed'><a href="/items/delete/{{this.blogid}}"><strong>x</strong></a></span>
+      <h3 class="createdDate">Posted on: {{shortDate  this.created_at}}</h3>
       <h2 class="postTitle">{{this.title}}</h2>
       <h2>{{this.id}}</h2>
       <p class="postContent">{{this.content}}</p>
@@ -15,10 +15,10 @@
 <h1 class="comments">Comments</h1>
 
 <ul class="comments">
-  {{#each both}}
+  {{#each data}}
   <div class="blogPostDiv">
-  <span class='completed'><a href="/api/v1/comments/delete/{{this.blogid}}"><strong>x</strong></a></span>
-  <h3 class="createdDate">Posted on: {{this.created_at}}</h3>
+  <span class='completed'><a href="/data/delete/{{this.id}}"><strong>x</strong></a></span>
+  <h3 class="createdDate">Posted on: {{shortDate this.created_at}}</h3>
   <h2>{{this.subject}}</h2>
   <p class="postContent">{{this.comment}}</p>
 </div>

@@ -16,6 +16,28 @@ a, p, h1, h2, h3 {
 .white, label{
   color: white;
 }
+.completed > h3, h2, p{
+  color:black;
+}
+.createBlog{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.inputBox{
+  display: flex;
+  justify-content: center;
+}
+
+label{
+  font-size: 16px;
+}
+.inputBox{
+  /*margin-right: 95%;*/
+  margin-top: 1%;
+  margin-bottom: 1%;
+
+}
 p.postContent{
   font-size: 1.2em;
   font-family: 'UbuntuRegular', sans-serif;
