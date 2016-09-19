@@ -1,2 +1,36 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+<ul class="blogPostDivContainer">
+  {{#each items}}
+    <div class="blogPostDiv">
+      <a href="/{{this.id}}">
+      <span class='completed'><a href="/api/v1/items/delete/{{this.blogid}}"><strong>x</strong></a></span>
+      <h2 class="postTitle">{{this.title}}</h2>
+      <p class="postContent">{{ this.content}}</p>
+      <li class="postName"><strong>Written by: {{this.name}}</strong></li>
+      <a href="article/{{this.blogid}}" class="read_more_button">Read More</a>
+    </div>
+  {{/each}}
+</ul>
+
+
+
+<h2> Create a blog post</h2>
+<p>Welcome {{user.user_name}}!</p>
+<section>
+  <form class='add-item' action='/' method='post'>
+    <div>
+      <label for='item-name'> Your Name </label>
+      <input type='text' name='name' value=''></input>
+    </div>
+    <div>
+      <label for='item-title'> Title </label>
+      <input type='text' name='title' value=''></input>
+    </div>
+    <div>
+      <label for='item-content'>Blog Post </label>
+      <textarea name='content' rows='8' cols= '40'></textarea>
+    </div>
+    <div>
+      <input type='submit'>
+    </div>
+  </form>
+</section>

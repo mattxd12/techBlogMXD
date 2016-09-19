@@ -7,6 +7,9 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var hbs = require('hbs');
+// const api = require('./api/index.js');
+
 
 var app = express();
 
@@ -14,8 +17,20 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
+hbs.registerHelper('dotdotdot', function(str) {
+  if (str.length > 400)
+    return str.substring(0,400) + '...';
+  return str;
+});
+
+hbs.registerHelper('shortDate', function(str) {
+  var date = str;
+  var shorten = date.toString().split(" ");
+  return shorten[1]+ ' ' +shorten[2]+ ', ' +shorten[3];
+});
+
 // uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
