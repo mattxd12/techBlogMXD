@@ -1,16 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var query = require('../db/query');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var knex = require('knex')({});
 
-router.use(bodyParser.urlencoded(
-  {extended: true}
-));
-
-router.use(cookieParser());
-router.use(bodyParser.json());
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -91,25 +82,25 @@ router.post('/article/:id/addcomment',(req, res, next) => {
 
 
 //not working yet
-  router.get('/data/delete/:id', function(req, res, next) {
-    console.log("deleting comment "+ req.params.id);
-    query.deleteBlogComment(req.params.id)
-    .then(function() {
-      res.redirect('/');
-    })
-    .catch(function(err) {
-      return next(err)
-    })
-  })
-  router.get('/data/modify/:id', function(req, res, next) {
-    console.log("deleting comment "+ req.params.id);
-    query.modifyBlogComment(req.params.id)
-    .then(function() {
-      res.redirect('/');
-    })
-    .catch(function(err) {
-      return next(err)
-    })
-  })
+  // router.get('/data/delete/:id', function(req, res, next) {
+  //   console.log("deleting comment "+ req.params.id);
+  //   query.deleteBlogComment(req.params.id)
+  //   .then(function() {
+  //     res.redirect('/');
+  //   })
+  //   .catch(function(err) {
+  //     return next(err)
+  //   })
+  // })
+  // router.get('/data/modify/:id', function(req, res, next) {
+  //   console.log("deleting comment "+ req.params.id);
+  //   query.modifyBlogComment(req.params.id)
+  //   .then(function() {
+  //     res.redirect('/');
+  //   })
+  //   .catch(function(err) {
+  //     return next(err)
+  //   })
+  // })
 
 module.exports = router;

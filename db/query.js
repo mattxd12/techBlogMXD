@@ -1,15 +1,4 @@
 var knex = require('./knex');
-var express = require('express');
-var router = express.Router();
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-
-router.use(bodyParser.urlencoded(
-  {extended: true}
-));
-
-router.use(cookieParser());
-router.use(bodyParser.json());
 
 
 function blogPosts() {

@@ -1,13 +1,17 @@
 var dotenv = require('dotenv').config();
+var pg = require('pg');
+
 
 module.exports = {
 
   development: {
-    client: 'postgresql',
-    connection: {
-      database:'techblogdb'
-    }
+    client: 'pg',
+    connection: 'postgres://localhost/techblogdb',
+    migrations: {
+			directory: './db/migrations'
+		}
   },
+
   production: {
     client: 'postgresql',
     connection: process.env.DATABASE_URL,
@@ -16,8 +20,9 @@ module.exports = {
       max: 10
     },
     migrations: {
-      tableName: 'knex_migrations'
-    }
+  			directory:'./db/migrations',
+        tableName: 'knex_migrations'
+      }
   }
 
 };
