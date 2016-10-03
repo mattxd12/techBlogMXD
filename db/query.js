@@ -1,7 +1,6 @@
 var knex = require('./knex');
 var express = require('express');
 var router = express.Router();
-var query = require('../db/query');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 

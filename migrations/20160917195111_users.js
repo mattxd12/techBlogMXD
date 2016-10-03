@@ -3,8 +3,8 @@ exports.up = function(knex, Promise) {
   table.increments();
   table.string('user_name');
   table.string('password');
-  table.string('first_name');
-  table.string('last_name');
+  // table.string('first_name');
+  // table.string('last_name');
   table.timestamps(true,true);
   })
 };
