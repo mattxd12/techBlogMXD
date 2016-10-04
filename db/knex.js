@@ -1,9 +1,7 @@
 var pg = require('pg');
-var enviroment = 'development';
+var environment = process.env.Node_ENV || 'development';
 
-var config = require('../knexfile');
-
-// var config = require('../knexfile')[environment];
+var config = require('../knexfile.js')[environment];
 
 
 module.exports = require('knex')(config);

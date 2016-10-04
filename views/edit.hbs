@@ -1,0 +1,15 @@
+<form action="/article/{{items.blogid}}/edit" method="POST">
+
+    <h2>Modify your question here:</h2>
+
+    <textarea type="text"  name="title">{{items.title}}</textarea>
+    <label for="title">title</label>
+
+    <textarea type="text" name="content"  >{{items.content}}</textarea>
+    <label for="content">content</label>
+
+    <textarea type="text" name="tags"  >{{items.tags}}</textarea>
+    <label for="tags">tags</label>
+
+    <button type="submit">save</button>
+</form>

@@ -1,8 +1,11 @@
-// 
-// jQuery(document).ready(function() {
-//   jQuery("time.timeago").timeago();
-// })
-//
+
+jQuery(document).ready(function() {
+  jQuery("time.timeago").timeago();
+})
+
+// jQuery(document).ready(function () {
+//   jQuery('.dropdown-toggle').dropdown();
+// });
 //
 // $('.likeButton').on('click', function() {
 //

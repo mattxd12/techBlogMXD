@@ -80,11 +80,11 @@ hbs.registerHelper('alterDate', function(str) {
   return text;
 }
   var month = switchDate(shorten[1]);
-  var dropSeconds = shorten[4].toString().split(":"); //not being used
-  var time = dropSeconds[0]+':'+dropSeconds[1]; //not being used
+  // var dropSeconds = shorten[4].toString().split(":"); //not being used
+  // var time = dropSeconds[0]+':'+dropSeconds[1]; //not being used
   var altered = shorten[3]+month+shorten[2]+'T'+shorten[4]+'-'+gmt[1];
   // var altered = shorten[3]+month+shorten[2]+'T'+time+'-'+gmt[1]; without seconds
-  console.log(shorten[4]);
+  console.log(altered);
   return altered.concat();
 });
 

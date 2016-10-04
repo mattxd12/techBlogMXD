@@ -1,15 +1,15 @@
+"use strict"
 var dotenv = require('dotenv').config();
-var pg = require('pg');
+// var pg = require('pg');
 
 
 module.exports = {
 
   development: {
     client: 'pg',
-    connection: 'postgres://localhost/techblogdb',
-    migrations: {
-			directory: './db/migrations'
-		}
+    connection: {
+      database: 'techblogdb'
+    }
   },
 
   production: {
@@ -26,3 +26,10 @@ module.exports = {
   }
 
 };
+
+// development: {
+//   client: 'pg',
+//   database: 'techblogdb',
+//   migrations: {
+//     directory: './db/migrations'
+//   }

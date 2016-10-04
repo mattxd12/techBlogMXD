@@ -1,3 +1,5 @@
+"use strict"
+
 var express = require('express');
 var router = express.Router();
 var query = require('../db/query');
@@ -14,11 +16,14 @@ router.get('/', function(req, res, next) {
        console.error("Error getting from the database");
        next(err)
      })
-  });
+})
 
 router.post('/', function (req, res, next) {
-  console.log(req.body)
-  query.newBlogPost(req.body.blogid, req.body.name, req.body.title, req.body.content)
+  var name = req.body.name;
+  var title = req.body.title;
+  var content = req.body.content;
+  var tags = req.body.tags;
+  query.newBlogPost(name, title, content, tags)
   .then(() =>{
       res.redirect('/')
     })
@@ -30,8 +35,11 @@ router.post('/', function (req, res, next) {
 
 router.post('/article/:id/addcomment',(req, res, next) => {
   console.log(req.body);
-  // res.json(req.body)
-  query.newBlogComment(req.body.blog_post_id, req.body.subject, req.body.comment)
+  var blog_post_id = req.body.blog_post_id;
+  var subject = req.body.subject;
+  var comment = req.body.comment;
+  var tags = req.body.tags;
+  query.newBlogComment(blog_post_id, subject, comment, tags)
   .then(() =>{
     res.redirect('/article/'+ req.params.id)
   })
@@ -59,7 +67,6 @@ router.post('/article/:id/addcomment',(req, res, next) => {
 
 
   router.get('/items/delete/:id', function(req, res, next) {
-    console.log("deleting comment "+ req.params.id);
     query.deleteBlogPost(req.params.id)
     .then(function() {
       res.redirect('/');
@@ -69,38 +76,66 @@ router.post('/article/:id/addcomment',(req, res, next) => {
     })
   })
 
-  router.get('/items/modify/:id', function(req, res, next) {
-    console.log("deleting comment "+ req.params.id);
-    query.modifyBlogPost(req.params.id)
-    .then(function() {
-      res.redirect('/');
+  router.get('/article/:id/edit', function(req, res, next) {
+
+    var post_id = req.params.id;
+
+    query.getBlogPostbyId(post_id)
+    .then(function(data) {
+      console.log(data);
+		var post = data[0];
+    res.render('edit', {
+        items: post
+      })
     })
     .catch(function(err) {
       return next(err)
     })
-  })
+});
 
 
-//not working yet
-  // router.get('/data/delete/:id', function(req, res, next) {
-  //   console.log("deleting comment "+ req.params.id);
-  //   query.deleteBlogComment(req.params.id)
-  //   .then(function() {
-  //     res.redirect('/');
-  //   })
-  //   .catch(function(err) {
-  //     return next(err)
-  //   })
+router.post('/article/:id/edit', function(req, res, next) {
+
+  // var post_id = req.params.id;
+	// query.getBlogPostbyId(post_id)
+	// .then(function(data) {
+		// var post = data[0];
+    var blogid = req.params.id;
+    var title = req.body.title;
+    var content = req.body.content;
+    var tags = req.body.tags;
+    console.log(req.body);
+    query.modifyBlogPost(title, content, tags, blogid)
+    .then(function() {
+      res.redirect('/article/'+blogid)
+    })
   // })
-  // router.get('/data/modify/:id', function(req, res, next) {
-  //   console.log("deleting comment "+ req.params.id);
-  //   query.modifyBlogComment(req.params.id)
-  //   .then(function() {
-  //     res.redirect('/');
-  //   })
-  //   .catch(function(err) {
-  //     return next(err)
-  //   })
+  	.catch((err)=>{
+    	return next(err)
+    })
+})
+
+
+// not working yet
+//   router.get('/data/delete/:id', function(req, res, next) {
+//     console.log("deleting comment "+ req.params.id);
+//     query.deleteBlogComment(req.params.id)
+//     .then(function() {
+//       res.redirect('/');
+//     })
+//     .catch(function(err) {
+//       return next(err)
+//     })
+//   })
+//   router.get('/data/modify/:id', function(req, res, next) {
+//     console.log("deleting comment "+ req.params.id);
+//     query.modifyBlogComment(req.params.id)
+//     .then(function() {
+//       res.redirect('/');
+//     })
+//     .catch(function(err) {
+//       return next(err)
+//     })
   // })
 
 module.exports = router;

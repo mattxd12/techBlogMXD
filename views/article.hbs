@@ -1,11 +1,22 @@
 <ul class="blogPostDivContainer">
   {{#each items}}
     <div class="blogPostDiv">
-      <div class="change">
-        <span class='deleteItem'><a href="/items/delete/{{this.blogid}}"><strong>x</strong></a></span>
-        <span class='modifyPost'><a href="/items/modify/{{this.blogid}}"><strong>edit</strong></a></span>
+      <!-- <div class="change"> -->
+      <div class="dropdown">
+        <button class="btn btn-default dropdown-toggle" type="button" id="myDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+          Actions
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+          <li><a href="/items/delete/{{this.blogid}}"><font color="black">Delete</font></a></li>
+          <li role="separator" class="divider"><font color="black"></font></li>
+          <li><a color="black" href="/article/{{this.blogid}}/edit"><font color="black">Edit</font></a></li>
+        </ul>
+        <p class="createdDate">Posted on: {{shortDate  this.created_at}}</p>
       </div>
-      <h3 class="createdDate">Posted on: {{shortDate  this.created_at}}</h3>
+        <!-- <span class='deleteItem'><a href="/items/delete/{{this.blogid}}"><strong>delete</strong></a></span>
+        <span class='modifyPost'><a href="/article/{{this.blogid}}/edit"><strong>edit</strong></a></span>
+      </div> -->
       <h2 class="postTitle">{{this.title}}</h2>
       <h2>{{this.id}}</h2>
       <p class="postContent">{{this.content}}</p>
@@ -21,41 +32,44 @@
     {{#each data}}
     <div class="borderDiv">
       <div class="change">
-        <span class='deleteItem'><a href="/data/delete/{{this.id}}"><strong>x</strong></a></span>
-        <span class='modifyPost'><a href="/data/modify/{{this.blogid}}"><strong>edit</strong></a></span>
+        <span class='deleteItem'><a href="/data/delete/{{this.id}}" class=""><strong>delete</strong></a></span>
       </div>
-      <p class="createdDate dateSmall">Posted on: {{shortDate this.created_at}}</p>
+      <!-- <p class="createdDate dateSmall">Posted on: {{shortDate this.created_at}}</p> -->
       <h2 class="commentSubject">{{this.subject}}</h2>
       <p class="postContent">{{this.comment}}</p>
-      <li class="postName"><strong>Written by: {{this.name}}</strong></li>
+      <li class="postName"> Written by: user {{this.name}} &nbsp;<time class="timeago" datetime=' {{alterDate this.created_at}}'>  {{this.created_at}} </time></li>
     {{/each}}
     </div>
   </ul>
 </div>
 
-<h2 class="commentHead">Add Comments</h2><br>
 <div class="commentContainer">
-  {{#each items}}
-  <div class="Comments">
-<!-- <p>@{{user.username}}!</p> -->
-<section>
-  <form class='add-comment' action='/article/{{this.blogid}}/addcomment' method='post'>
-    <div>
-      <input type='hidden' id='commentAndBlogId' name='blog_post_id' value='{{this.blogid}}'></input>
-    </div>
-    <div>
-      <label for='comment-subject'>subject:</label>
-      <input type='text' name='subject' placeholder='subject' class="inputBox" value=''></input>
-    </div>
-    <div>
-      <label for='comment-comment'>comment:</label>
-      <textarea name='comment' placeholder='comment' class="inputBox"rows='10' cols= '80'></textarea>
-    </div>
-    <div>
-      <input type='submit' id='commentSubmit' value="Submit"></input>
-    </div>
-  </form>
-</section>
-{{/each}}
+<h1 class="">Add Comments</h1><br>
 </div>
+<div class="container text-lg-center">
+  {{#each items}}
+<!-- <p>@{{user.username}}!</p> -->
+    <div class='row'>
+      <div class="col-lg-8 offset-lg-4">
+        <form class='add-comment' action='/article/{{this.blogid}}/addcomment' method='post'>
+
+        <div class="form-group">
+          <input type='hidden' id='commentAndBlogId' name='blog_post_id' value='{{this.blogid}}'></input>
+        </div>
+        <div class="form-group">
+          <label for='comment-subject'>subject:</label>
+          <input type='text' name='subject' placeholder='subject' class="inputBox form-control" value=''></input>
+        </div>
+
+        <div class="form-group">
+          <label for='comment-comment'>comment:</label>
+          <textarea name='comment' placeholder='comment' class="inputBox form-control"rows='10' cols= '80'></textarea>
+        </div>
+        <div class="col-lg-2 text-center ">
+          <input type='submit' class='pull-xs-right btn btn-primary' id='commentSubmit' value="Submit"></input>
+        </div>
+        </form>
+{{/each}}
+    </div>
+  </div>
 </div>

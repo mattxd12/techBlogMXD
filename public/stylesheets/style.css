@@ -1,23 +1,27 @@
+html{
+  background-color: black;
+}
 body {
   padding: 0px;
   margin:0px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   background-image: url('../images/blogBackground.jpg');
   background-repeat: no-repeat;
-  background-color: black;
   background-position: center;
-  width: auto;
-  overflow: inherit;
+  background-size: auto;
+  /*overflow: inherit;*/
+  background-color: black !important;
+
 }
 a, p, h1, h2, h3 {
-  color: white;
+  color: white !important;
   list-style: none;
 }
 .white, label{
   color: white;
 }
 .completed > h3, h2, p{
-  color:black;
+  color:black !important;
 }
 .createBlog, .commentContainer{
   display: flex;
@@ -46,10 +50,6 @@ p.postContent{
   font-size: 1.2em;
   font-family: 'UbuntuRegular', sans-serif;
   margin: 1.5% 1.5% 1.5% 1.5%;
-}
-.createdDate{
-  margin: 1.5% 1.5% 1.5% 1.5%;
-  color: black;
 }
 .borderDiv{
   border-top: 1px black solid;
@@ -176,6 +176,13 @@ p.postContent{
   padding: 3px 5px 2px 2px;
 }
 
+.createdDate{
+  float: right;
+  color: black;
+  margin-top: 2px;
+  margin-right: 5px;
+  }
+}
 @media only screen and (max-width: 768px) {
     /* For mobile phones: */
     .blogPostDivContainer {
@@ -254,5 +261,6 @@ p.postContent{
     display: flex;
     justify-content: flex-start;
     max-height: 60px;
+
 }
 }
