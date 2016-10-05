@@ -1,5 +1,6 @@
 html{
-  background-color: black;
+height: 100%;
+width:100%;
 }
 body {
   padding: 0px;
@@ -9,20 +10,11 @@ body {
   background-repeat: no-repeat;
   background-position: center;
   background-size: auto;
-  /*overflow: inherit;*/
+  overflow: inherit;
   background-color: black !important;
 
 }
-a, p, h1, h2, h3 {
-  color: white !important;
-  list-style: none;
-}
-.white, label{
-  color: white;
-}
-.completed > h3, h2, p{
-  color:black !important;
-}
+
 .createBlog, .commentContainer{
   display: flex;
   justify-content: center;
@@ -151,10 +143,10 @@ p.postContent{
   background-color: rgb(13, 7, 112) !important;
 }
 .comments{
-  color: white;
+  color: black !important;
 }
 .deleteItem > a{
-  color: red;
+  color: red !important;
   text-decoration: none;
   font-size: 1.2em;
   margin-left: 0;
@@ -175,14 +167,42 @@ p.postContent{
   float: right;
   padding: 3px 5px 2px 2px;
 }
-
 .createdDate{
   float: right;
   color: black;
   margin-top: 2px;
   margin-right: 5px;
   }
+.disable {
+  opacity : 0.5;
 }
+.centerContainer{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+a, p, h1, h2 {
+  color: white !important;
+  list-style: none;
+}
+.white, label{
+  color: white;
+}
+.completed > h3, p{
+  color:black !important;
+}
+
+.btn{
+  background: rgb(13, 7, 112) !important;
+  color: white !important;
+}
+
+/*.btn-default.raised:active, .btn-default.raised.active {
+	box-shadow: none;
+	margin-bottom: -3px;
+	margin-top: 3px;
+}*/
+
 @media only screen and (max-width: 768px) {
     /* For mobile phones: */
     .blogPostDivContainer {
