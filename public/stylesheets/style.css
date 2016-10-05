@@ -109,7 +109,6 @@ p.postContent{
 .postName{
   display: flex;
   justify-content: flex-end;
-  padding-bottom: 1.5%;
   padding-right: 1.5%;
   color: black;
 }

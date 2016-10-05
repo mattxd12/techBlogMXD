@@ -1,11 +1,11 @@
 <ul class="blogPostDivContainer">
   {{#each items}}
     <div class="blogPostDiv">
-      <a href="/{{this.id}}">
-      <div class="change">
-        <span style='color:red' class='deleteItem'><a href="/items/delete/{{this.blogid}}"><strong>x</strong></a></span>
-        <span class='modifyPost'><a href="/items/modify/{{this.blogid}}"><strong>edit</strong></a></span>
-      </div>
+      <!-- <a href="/{{this.id}}"> -->
+      <!-- <div class="change">
+        <span style='color:red' class='deleteItem'><a href="/items/delete/{{this.blogid}}"><font color="red">x</font></a></span>
+        <span class='modifyPost'><a href="/items/modify/{{this.blogid}}"><font color="black">edit</font></a></span>
+      </div> -->
       <h3 class="postTitle">{{this.title}}</h3>
       <p class="postContent">{{dotdotdot this.content}}</p>
       <li class="postName"><strong>Written by: {{this.name}}</strong></li>
@@ -15,24 +15,29 @@
 </ul>
 
 
-
 <h1 class='white createBlog'> Create a blog post</h1>
-<section class='createBlog'>
-  <form class='add-item' action='/' method='post'>
-    <div>
-      <label for='item-name'>user name </label>
-      <input type='text' name='name' class="inputBox" placeholder="user name" value=''></input>
+<div class="col-md-4 col-md-offset-2">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-9 offset-lg-1">
+        <form class='add-item' action='/' method='post'>
+          <div class="form-group">
+            <label for='item-name'>user name </label>
+            <input type='text' name='name' class="inputBox form-control" placeholder="user name" value=''></input>
+          </div>
+          <div class="form-group">
+            <label for='item-title'> title </label>
+            <input type='text' name='title' class="inputBox form-control" placeholder="title" value=''></input>
+          </div>
+          <div class="form-group">
+            <label for='item-content'>blog post </label>
+            <textarea name='content' placeholder='blog post' class="inputBox form-control"></textarea>
+          </div>
+          <div class="col-md-4 col-md-offset-4 form-group">
+            <input type='submit' class="btn btn-primary pull-xs-right btn-block">
+          </div>
+        </form>
+      </div>
     </div>
-    <div>
-      <label for='item-title'> title </label>
-      <input type='text' name='title' class="inputBox" placeholder="title" value=''></input>
-    </div>
-    <div>
-      <label for='item-content'>blog post </label>
-      <textarea name='content' placeholder='blog post' class="inputBox postInputBox" rows='10' cols= '90'></textarea>
-    </div>
-    <div>
-      <input type='submit'>
-    </div>
-  </form>
-</section>
+  </div>
+</div>
