@@ -1,6 +1,6 @@
 // var passport = require("passport");
 //
-// var Local = require("passport-local");
+// var session = require("express-session");
 // var users = require("./routes/users");
 //
 // passport.use(new Local(function (username, password, done) {
